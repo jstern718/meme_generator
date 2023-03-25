@@ -1,0 +1,27 @@
+
+h1 {
+    font-family: sans-serif;
+
+}
+
+img{
+    width: 200px;
+    height: 270px;
+    object-fit:cover;
+}
+
+#page{
+    border: 1px black solid;
+    padding: 5px;
+    margin: 5px;
+    width: 90vw;
+}
+
+#nextImages{
+    width: 50px;
+    height: 270px;
+    border: none;
+    font-size: larger;
+    font-weight: 400;
+
+}
