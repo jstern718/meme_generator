@@ -27,10 +27,37 @@ const imagesArray = [
 
 ];
 
-function imageFunc(){
-  const image1 = getElementByID(img1);
-  const image2 = getElementByID(img2);
-  const image3 = getElementByID(img3);
-  const image4 = getElementByID(img4);
-  console.log(image1);
+let imageCounter = 0;
+
+
+function imageLoad(){
+  document.querySelector("#img1").src = "images/andrew-umansky-l5truYNKmm8-unsplash.jpg";
+  console.log("test");
 }
+
+function changeImages(){
+  document.querySelector("#img1").src = imagesArray[imageCounter];
+  document.querySelector("#img2").src = imagesArray[imageCounter + 1];
+  document.querySelector("#img3").src = imagesArray[imageCounter + 2];
+  document.querySelector("#img4").src = imagesArray[imageCounter + 3];
+  imageCounter += 4;
+}
+
+function chooseImage(imageNum){
+  console.log("clicked");
+  const imagePath = document.querySelector(`${imageNum}`).src;
+  console.log(imagePath);
+  document.querySelector("#yourImage").src = `${imagePath}`;
+
+}
+
+function submitForm(){
+
+}
+
+// const image1 = getElementByID("img1");
+// const image2 = getElementByID("img2");
+// const image3 = getElementByID("img3");
+// const image4 = getElementByID("img4");
+// console.log(image1);
+// Document.addEventListener("click", (event) => imageFunc());
