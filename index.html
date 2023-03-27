@@ -11,7 +11,7 @@
 <body >
   <div id="entirePage">
     <h1>Meme Generator</h1>
-    <form onsubmit="submitForm()">
+    <form id="selectImageForm">
       <label>Would you like to provide a link to an image of your choice or use one of the provided images? (click one)</label>
       <input type="radio" name="sourceRadio" id="outsideSourceRadio1" class="radioInputs"> Provide a link to the image you want to use for your meme:
       <input type="text" name="outsideSourceTextInput" id="outsideSourceTextInput" class="textInputs">
@@ -48,14 +48,18 @@
           <img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="yourImage" class="largerImg">
         </div>
         <div id="addTextDiv">
-          <form onsubmit="submitForm()">
-            <h4>Add text to the top of your meme:<h4>
+          <form id="addTextForm">
+            <h4>Add text to the top of your meme:</h4>
             <input type="text" name="topText" id="topTextInput" class="textInputs">
             <h4>Add text to the bottom of your meme:</h4>
             <input type="text" name="bottomText" id="bottomTextInput" class="textInputs">
             <br>
             <br>
             <input type="submit" class="textButtons"  name="viewMeme" value="View this meme">
+
+          </form>
+          <br>
+          <form id="saveMemeForm">
             <input type="submit" class="textButtons" name="saveMeme" value="Save this meme to your gallery">
           </form>
 
@@ -67,10 +71,10 @@
     <br>
     <table>
       <tr>
-        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="youMeme1" class="imgCarousel"></td>
-        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="youMeme2" class="imgCarousel"></td>
-        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="youMeme3" class="imgCarousel"></td>
-        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="youMeme4" class="imgCarousel"></td>
+        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="yourMeme1" class="imgCarousel"></td>
+        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="yourMeme2" class="imgCarousel"></td>
+        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="yourMeme3" class="imgCarousel"></td>
+        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="yourMeme4" class="imgCarousel"></td>
         <td><button id="nextImagesButton2" onClick="changeMemes()" class="buttonCarousel"> > </button></td>
       </tr>
     </table>

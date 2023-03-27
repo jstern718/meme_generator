@@ -29,11 +29,20 @@ const imagesArray = [
 
 let imageCounter = 0;
 
+const memeGallery = [
+  "images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg",
+  "images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg",
+  "images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg",
+  "images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg"
+];
+
+let savedMemeCounter = 0;
+
+
 const presentMeme = {
   image: "images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg",
   topText: "",
   bottomText: ""
-
 
 }
 
@@ -68,16 +77,16 @@ function changeImagesBackwards(){
 }
 
 function chooseImage(imageNum){
-  console.log("clicked");
+  // console.log("clicked");
   const imagePath = document.querySelector(`${imageNum}`).src;
   console.log(imagePath);
   document.querySelector("#yourImage").src = `${imagePath}`;
 
 }
 
-function submitForm(){
+// function submitForm(){
 
-}
+// }
 
 // function viewMeme(){
 //   setTimeout("viewFunc()", 2000)
@@ -98,3 +107,67 @@ function submitForm(){
 // const image4 = getElementByID("img4");
 // console.log(image1);
 // Document.addEventListener("click", (event) => imageFunc());
+
+
+//TODO
+//__make text entry for meme work,
+//__make retrieve image from web work
+
+const addTextForm = document.querySelector("#addTextForm");
+addTextForm.addEventListener("submit", function(event){
+  event.preventDefault();
+
+  //Top Text
+  const topText = event.target.topTextInput.value;
+  const topMemeText = document.querySelector("#topMemeText");
+  presentMeme.topText = topText;
+  topMemeText.innerHTML = topText;
+
+  //bottom Text
+  const bottomText = event.target.bottomTextInput.value;
+  const bottomMemeText = document.querySelector("#bottomMemeText");
+  presentMeme.bottomText = bottomText;
+  bottomMemeText.innerHTML = bottomText;
+})
+
+const selectImage = document.querySelector("#selectImageForm");
+selectImage.addEventListener("submit", function(event){
+  event.preventDefault();
+  const imageAddress = event.target.outsideSourceTextInput.value;
+  presentMeme.address = imageAddress;
+  document.querySelector("#yourImage").src = `${imageAddress}`;
+
+})
+
+const saveMeme = document.querySelector("#saveMemeForm");
+saveMeme.addEventListener("submit", function(event){
+  event.preventDefault();
+  memeGallery.unshift(presentMeme);
+  savedMemeCounter = 0;
+  loadSavedMemes();
+});
+
+function changeSavedMemes(){
+  savedMemeCounter += 4;
+  if (savedMemeCounter > memeGallery.length+2){
+    savedMemeCounter = 0;
+  }
+  loadSavedMemes();
+}
+
+function changeSavedMemesBackwards(){
+  savedMemeCounter -= 4;
+  if (savedMemeCounter < 0){
+    const spacesToAdd = 4 - (memeGallery.length-1 % 4);
+    savedMemeCounter = memeGallery.length-1 + spacesToAdd;
+  }
+  loadSavedMemes();
+}
+
+function loadSavedMemes(){
+  document.querySelector("#yourMeme1").src = memeGallery[savedMemeCounter];
+  document.querySelector("#yourMeme2").src = memeGallery[savedMemeCounter + 1];
+  document.querySelector("#yourMeme3").src = memeGallery[savedMemeCounter + 2];
+  document.querySelector("#yourMeme4").src = memeGallery[savedMemeCounter + 3];
+
+}
