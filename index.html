@@ -9,47 +9,72 @@
   <title>Document</title>
 </head>
 <body >
-  <div id="page">
+  <div id="entirePage">
     <h1>Meme Generator</h1>
     <form onsubmit="submitForm()">
-      <h4>Would you like to provide a link to an image of your choice or use one of the provided images? (click one)</h4>
-      <input type="radio" name="outsideSource" id="typeImage1"> Provide a link to the image you want to use for your meme:
-      <input type="text" name="sourceInput" id="sourceInput">
+      <label>Would you like to provide a link to an image of your choice or use one of the provided images? (click one)</label>
+      <input type="radio" name="sourceRadio" id="outsideSourceRadio1" class="radioInputs"> Provide a link to the image you want to use for your meme:
+      <input type="text" name="outsideSourceTextInput" id="outsideSourceTextInput" class="textInputs">
+      <button class="textButtons">Retrieve image from website</button>
       <br>
-      <input type="radio" name="insideSource" id="typeImage2"> Choose an image for your meme from the images below:
       <br>
+      <input type="radio" name="sourceRadio" id="outsideSourceRadio2" class="radioInputs"> Choose an image for your meme from the images below:
+      <br>
+      <br>
+    </form>
       <table>
         <tr>
-          <td><img src="images/jared-rice-O6DUoIl6NWA-unsplash.jpg" alt="" id="img1" onClick="chooseImage('#img1')"></td>
-          <td><img src="images/nail-gilfanov-M74Pihi2vz8-unsplash.jpg" alt="" id="img2" onClick="chooseImage('#img2')"></td>
-          <td><img src="images/noah-naf-ATnB7EbH86I-unsplash.jpg" alt="" id="img3" onClick="chooseImage('#img3')"></td>
-          <td><img src="images/raoul-droog-Ea8rP2Ebp_4-unsplash.jpg" alt="" id="img4" onClick="chooseImage('#img4')"></td>
-          <td><button id="nextImages" onClick="changeImages()"> > </button></td>
+          <td><button id="nextImagesButton1" onClick="changeImagesBackwards()" class="buttonCarousel"> < </button></td>
+          <td><img src="images/andrew-umansky-l5truYNKmm8-unsplash.jpg" alt="" id="img1" onClick="chooseImage('#img1')" class="imgCarousel"></td>
+          <td><img src="images/belinda-fewings-73XDjmZQo6Y-unsplash.jpg" alt="" id="img2" onClick="chooseImage('#img2')" class="imgCarousel"></td>
+          <td><img src="images/charlesdeluvio-bYXP-ITv4_s-unsplash.jpg" alt="" id="img3" onClick="chooseImage('#img3')" class="imgCarousel"></td>
+          <td><img src="images/georgy-trofimov-rNTl4AMAPdE-unsplash.jpg" alt="" id="img4" onClick="chooseImage('#img4')" class="imgCarousel"></td>
+          <td><button id="nextImagesButton1" onClick="changeImages()" class="buttonCarousel"> > </button></td>
         </tr>
       </table>
+      <div id="presentImageDiv">
+        <div id="presentImageSubDiv">
+          <h3>The image you have chosen:</h3>
+          <div id="topMemeDiv">
+            <div id="topMemeSubDiv">
+              <p id="topMemeText" class="memeText">This is blank it is still very blank</p>
+            </div>
+          </div>
+          <div id="bottomMemeDiv">
+            <div id="bottomMemeSubDiv">
+              <p id="bottomMemeText" class="memeText">That is still very blank ok </p>
+            </div>
+          </div>
+          <img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="yourImage" class="largerImg">
+        </div>
+        <div id="addTextDiv">
+          <form onsubmit="submitForm()">
+            <h4>Add text to the top of your meme:<h4>
+            <input type="text" name="topText" id="topTextInput" class="textInputs">
+            <h4>Add text to the bottom of your meme:</h4>
+            <input type="text" name="bottomText" id="bottomTextInput" class="textInputs">
+            <br>
+            <br>
+            <input type="submit" class="textButtons"  name="viewMeme" value="View this meme">
+            <input type="submit" class="textButtons" name="saveMeme" value="Save this meme to your gallery">
+          </form>
 
-      <h3>The image you have chosen:</h3>
-      <img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="yourImage">
-      <h4>Add text to the top of your meme:<h4>
-      <input type="text" name="topText" id="topTextInput">
-      <h4>Add text to the bottom of your meme:</h4>
-      <input type="text" name="bottomText" id="bottomTextInput">
-      <br>
-      <br>
-      <button>Save this meme to your gallery</button>
+        </div>
 
-    </form>
+
+      </div>
+
     <br>
     <table>
       <tr>
-        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="youMeme1"></td>
-        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="youMeme2"></td>
-        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="youMeme3"></td>
-        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="youMeme4"></td>
-        <td><button id="nextImages" onClick="changeMemes()"> > </button></td>
+        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="youMeme1" class="imgCarousel"></td>
+        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="youMeme2" class="imgCarousel"></td>
+        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="youMeme3" class="imgCarousel"></td>
+        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="youMeme4" class="imgCarousel"></td>
+        <td><button id="nextImagesButton2" onClick="changeMemes()" class="buttonCarousel"> > </button></td>
       </tr>
     </table>
-
+    <button onclick="viewMeme()">Hello World</button>
 
   </div>
   <script type="text/javascript" src="main.js"></script>

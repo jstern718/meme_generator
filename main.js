@@ -2,18 +2,18 @@ const imagesArray = [
   "images/andrew-umansky-l5truYNKmm8-unsplash.jpg",
   "images/belinda-fewings-73XDjmZQo6Y-unsplash.jpg",
   "images/charlesdeluvio-bYXP-ITv4_s-unsplash.jpg",
-  "images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg",
-  "images/charlesdeluvio-pOUA8Xay514-unsplash.jpg",
   "images/georgy-trofimov-rNTl4AMAPdE-unsplash.jpg",
+  "images/charlesdeluvio-pOUA8Xay514-unsplash.jpg",
   "images/hang-niu-Tn8DLxwuDMA-unsplash.jpg",
   "images/harry-grout-_CTpGHp8nGk-unsplash.jpg",
   "images/henley-design-studio-XbZgARqXROc-unsplash.jpg",
+  "images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg",
   "images/jamie-haughton-Z05GiksmqYU-unsplash.jpg",
-  "images/jared-rice-O6DUoIl6NWA-unsplash.jpg",
   "images/john-cobb-6QMEh31lUes-unsplash.jpg",
   "images/karsten-winegeart-QcwLDcfLXkk-unsplash.jpg",
   "images/karsten-winegeart-qy0BHykaq0E-unsplash.jpg",
   "images/karsten-winegeart-W9c6YicHKyE-unsplash.jpg",
+  "images/jared-rice-O6DUoIl6NWA-unsplash.jpg",
   "images/mahdi-bafande-2HW1I7sMbs8-unsplash.jpg",
   "images/marco-biondi-0apwACX-W2Y-unsplash.jpg",
   "images/nail-gilfanov-M74Pihi2vz8-unsplash.jpg",
@@ -29,18 +29,42 @@ const imagesArray = [
 
 let imageCounter = 0;
 
+const presentMeme = {
+  image: "images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg",
+  topText: "",
+  bottomText: ""
 
-function imageLoad(){
-  document.querySelector("#img1").src = "images/andrew-umansky-l5truYNKmm8-unsplash.jpg";
-  console.log("test");
+
 }
 
+
+// function imageLoad(){
+//   document.querySelector("#img1").src = "images/andrew-umansky-l5truYNKmm8-unsplash.jpg";
+//   console.log("test");
+// }
+
 function changeImages(){
+  imageCounter += 4;
+  if (imageCounter >= 23){
+    imageCounter = 0;
+  }
   document.querySelector("#img1").src = imagesArray[imageCounter];
   document.querySelector("#img2").src = imagesArray[imageCounter + 1];
   document.querySelector("#img3").src = imagesArray[imageCounter + 2];
   document.querySelector("#img4").src = imagesArray[imageCounter + 3];
-  imageCounter += 4;
+
+}
+
+function changeImagesBackwards(){
+  imageCounter -= 4;
+  if (imageCounter <= 0){
+    imageCounter = 21;
+  }
+  document.querySelector("#img1").src = imagesArray[imageCounter];
+  document.querySelector("#img2").src = imagesArray[imageCounter + 1];
+  document.querySelector("#img3").src = imagesArray[imageCounter + 2];
+  document.querySelector("#img4").src = imagesArray[imageCounter + 3];
+
 }
 
 function chooseImage(imageNum){
@@ -54,6 +78,19 @@ function chooseImage(imageNum){
 function submitForm(){
 
 }
+
+// function viewMeme(){
+//   setTimeout("viewFunc()", 2000)
+// }
+
+// function viewFunc(){
+//   const address = window.location.href;
+//   console.log(address);
+//   const regex = "?<=topText).*"
+//   const answer = address.search(regex);
+//   console.log(answer);
+
+// }
 
 // const image1 = getElementByID("img1");
 // const image2 = getElementByID("img2");
