@@ -5,7 +5,7 @@ h1 {
 }
 
 
-label {
+label, p {
     font-family: sans-serif;
     font-weight:300;
 }
@@ -33,19 +33,21 @@ h4{
 .imgCarousel {
     width: 20vw;
     height: 27vw;
-    /* object-fit:cover; */
+
 }
 
-#presentImageDiv{
+.galleryImages{
+  width: 40vw;
+  height: 54vw;
+}
+
+#presentImageDiv, .presentImageDivs{
   display: flex;
   border: 1px lightgray solid;
   padding: 1vw;
 
 }
 
-presentImageSubDiv{
-  display: flex;
-}
 
 .memeText{
     font-size: 4vw;
@@ -62,50 +64,41 @@ presentImageSubDiv{
 
 }
 
-#topMemeDiv{
+#topMemeDiv, .topMemeDivs{
   position: absolute;
-  margin-top: -5vw;
-  width: 36vw;
-  /* max-height: 16vw; */
+  margin-top: 0vw;
+  width: 25vw;
   z-index: 2;
   padding: 10px;
-  /* display: flex; */
+
 }
 
-#topMemeSubDiv{
-  /* position: relative; */
+#topMemeSubDiv, .topMemeSubDivs{
   flex-direction: row;
   flex-basis: 0ch;
   justify-content: center;
   display:flex;
   z-index: 3;
   margin: 1px;
-  /* flex-shrink: 1; */
-
-
-
 
 }
 
-#topMemeText{
+#topMemeText, .topMemeTexts{
   z-index: 4;
   font-size:200%;
 
-
 }
 
-#bottomMemeDiv{
+#bottomMemeDiv, .bottomMemeDivs{
   position: absolute;
-  margin-top: 34vw;
-  width: 36vw;
-  /* max-height: 16vw; */
+  margin-top: 27vw;
+  width: 25vw;
   z-index: 2;
   padding: 10px;
-  /* display: flex; */
 }
 
-#bottomMemeSubDiv{
-  /* position: relative; */
+#bottomMemeSubDiv, .bottomMemeSubDivs{
+
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
@@ -114,7 +107,7 @@ presentImageSubDiv{
 
 }
 
-#bottomMemeText{
+#bottomMemeText, .bottomMemeTexts{
   z-index: 4;
   font-size:200%;
 
@@ -127,12 +120,11 @@ presentImageSubDiv{
 }
 
 .largerImg{
-  width: 40vw;
-  height: 54vw;
+  width: 25vw;
+  height: 40vw;
   object-fit:cover;
   position: relative;
   z-index: 1;
-
 }
 
 .buttonCarousel{
@@ -155,4 +147,61 @@ presentImageSubDiv{
     width: 90vw;
 }
 
+/* gallery items */
 
+.galleryDivs{
+  display: flex;
+  flex-direction:row;
+  padding: 1vw;
+  flex-wrap:wrap;
+
+}
+
+
+.galleryTopSubDivs{
+  flex-direction: row;
+  flex-basis: 0ch;
+  justify-content: center;
+  display:flex;
+  z-index: 3;
+  margin: 1px;
+
+}
+
+.gallery1TopText{
+
+  z-index: 4;
+  font-size:200%;
+
+
+}
+
+.galleryBottomDivs{
+  position: absolute;
+  margin-top: 34vw;
+  width: 25vw;
+  z-index: 2;
+  padding: 10px;
+
+}
+
+.galleryBottomSubDivs{
+  flex-direction:row;
+  flex-basis: 0ch;
+  justify-content: center;
+  display:flex;
+  z-index: 3;
+  margin: 1px;
+
+}
+
+.gallery1BottomText{
+  position: relative;
+  z-index: 4;
+  font-size:200%;
+
+}
+
+.deleteButtons{
+  width: 25vw;
+}

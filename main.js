@@ -27,30 +27,16 @@ const imagesArray = [
 
 ];
 
+let submitChecker;
 let imageCounter = 0;
-
-const memeGallery = [
-  "images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg",
-  "images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg",
-  "images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg",
-  "images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg"
-];
-
-let savedMemeCounter = 0;
-
+let savedMemeNumber = 0;
+let savedMemeRow = 0;
 
 const presentMeme = {
   image: "images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg",
   topText: "",
   bottomText: ""
-
 }
-
-
-// function imageLoad(){
-//   document.querySelector("#img1").src = "images/andrew-umansky-l5truYNKmm8-unsplash.jpg";
-//   console.log("test");
-// }
 
 function changeImages(){
   imageCounter += 4;
@@ -64,6 +50,7 @@ function changeImages(){
 
 }
 
+//go to left in provided images
 function changeImagesBackwards(){
   imageCounter -= 4;
   if (imageCounter <= 0){
@@ -77,41 +64,11 @@ function changeImagesBackwards(){
 }
 
 function chooseImage(imageNum){
-  // console.log("clicked");
   const imagePath = document.querySelector(`${imageNum}`).src;
-  console.log(imagePath);
+  presentMeme.image = imagePath;
   document.querySelector("#yourImage").src = `${imagePath}`;
 
 }
-
-// function submitForm(){
-
-// }
-
-// function viewMeme(){
-//   setTimeout("viewFunc()", 2000)
-// }
-
-// function viewFunc(){
-//   const address = window.location.href;
-//   console.log(address);
-//   const regex = "?<=topText).*"
-//   const answer = address.search(regex);
-//   console.log(answer);
-
-// }
-
-// const image1 = getElementByID("img1");
-// const image2 = getElementByID("img2");
-// const image3 = getElementByID("img3");
-// const image4 = getElementByID("img4");
-// console.log(image1);
-// Document.addEventListener("click", (event) => imageFunc());
-
-
-//TODO
-//__make text entry for meme work,
-//__make retrieve image from web work
 
 const addTextForm = document.querySelector("#addTextForm");
 addTextForm.addEventListener("submit", function(event){
@@ -123,13 +80,21 @@ addTextForm.addEventListener("submit", function(event){
   presentMeme.topText = topText;
   topMemeText.innerHTML = topText;
 
+  // const textEntry1 = querySelector("#topTextInput");
+  // textEntry1.value = "";
+
   //bottom Text
   const bottomText = event.target.bottomTextInput.value;
   const bottomMemeText = document.querySelector("#bottomMemeText");
   presentMeme.bottomText = bottomText;
   bottomMemeText.innerHTML = bottomText;
+
+  if (submitChecker === "sub2"){
+    loadSavedMemes(event)
+  }
 })
 
+//get image from web
 const selectImage = document.querySelector("#selectImageForm");
 selectImage.addEventListener("submit", function(event){
   event.preventDefault();
@@ -139,35 +104,70 @@ selectImage.addEventListener("submit", function(event){
 
 })
 
-const saveMeme = document.querySelector("#saveMemeForm");
-saveMeme.addEventListener("submit", function(event){
-  event.preventDefault();
-  memeGallery.unshift(presentMeme);
-  savedMemeCounter = 0;
-  loadSavedMemes();
-});
+function loadSavedMemes(event){
 
-function changeSavedMemes(){
-  savedMemeCounter += 4;
-  if (savedMemeCounter > memeGallery.length+2){
-    savedMemeCounter = 0;
-  }
-  loadSavedMemes();
+  //making a copy of meme
+  const presMeme = document.querySelector("#presentImageSubDiv");
+  const copyOfPresMeme = presMeme.cloneNode(true);
+  copyOfPresMeme.removeChild(copyOfPresMeme.firstElementChild);
+
+  event.target.topTextInput.value = "";
+  event.target.bottomTextInput.value = ""
+
+  //changing id names in meme b/c otherwise they would be same as
+  //in original and adding adjusted class names
+
+  copyOfPresMeme.id = `copyOfPresMeme${savedMemeNumber}`;
+
+  const child1 = copyOfPresMeme.firstElementChild;
+  child1.id = `topMemeDiv${savedMemeNumber}`;
+  child1.classList.add("topMemeDivs");
+  const child2 = child1.nextElementSibling;
+  child2.id = `bottomMemeDiv${savedMemeNumber}`;
+  child2.classList.add("bottomMemeDivs");
+
+  const child1a = child1.firstElementChild;
+  child1a.id = `topMemeSubDiv${savedMemeNumber}`;
+  child1a.classList.add("topMemeSubDivs");
+  const child2a = child2.firstElementChild;
+  child2a.id = `bottomMemeSubDiv${savedMemeNumber}`;
+  child2a.classList.add("bottomMemeSubDivs");
+
+  const child1a1 = child1a.firstElementChild;
+  child1a1.id = `topMemeText${savedMemeNumber}`;
+  child1a1.classList.add("topMemeTexts");
+  child1a1.value = topTextInput;
+
+  const child2a1 = child2a.firstElementChild;
+  child2a1.id = `bottomMemeText${savedMemeNumber}`;
+  child2a1.classList.add("bottomMemeTexts");
+  child2a1.value = bottomTextInput;
+
+  const galleryTableRow  = document.querySelector(".galleryRow");
+
+  let rowItem = document.createElement('td')
+  rowItem.appendChild(copyOfPresMeme);
+  const deleteMeme = document.createElement("form");
+  const deleteButton = document.createElement("input");
+  deleteMeme.appendChild(deleteButton);
+  deleteButton.type = "submit";
+
+  deleteButton.classList.add("deleteButtons")
+  deleteButton.value = "delete meme"
+
+
+  rowItem.appendChild(deleteMeme);
+  galleryTableRow.appendChild(rowItem);
+  deleteMeme.onclick = deleteFunc(event);
+
+  savedMemeNumber += 1;
+
 }
 
-function changeSavedMemesBackwards(){
-  savedMemeCounter -= 4;
-  if (savedMemeCounter < 0){
-    const spacesToAdd = 4 - (memeGallery.length-1 % 4);
-    savedMemeCounter = memeGallery.length-1 + spacesToAdd;
-  }
-  loadSavedMemes();
-}
-
-function loadSavedMemes(){
-  document.querySelector("#yourMeme1").src = memeGallery[savedMemeCounter];
-  document.querySelector("#yourMeme2").src = memeGallery[savedMemeCounter + 1];
-  document.querySelector("#yourMeme3").src = memeGallery[savedMemeCounter + 2];
-  document.querySelector("#yourMeme4").src = memeGallery[savedMemeCounter + 3];
+//didn't get delete working.
+function deleteFunc(event){
+  event.preventDefault;
+  console.log(event.target);
 
 }
+

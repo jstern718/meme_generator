@@ -5,20 +5,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-
   <title>Document</title>
 </head>
 <body >
   <div id="entirePage">
     <h1>Meme Generator</h1>
     <form id="selectImageForm">
-      <label>Would you like to provide a link to an image of your choice or use one of the provided images? (click one)</label>
-      <input type="radio" name="sourceRadio" id="outsideSourceRadio1" class="radioInputs"> Provide a link to the image you want to use for your meme:
+      <h3>Would you like to provide a link to an image of your choice or use one of the provided images? (click one)</h3>
+      <p>Please enter your link here if you would like to use an external image for your meme:</p>
       <input type="text" name="outsideSourceTextInput" id="outsideSourceTextInput" class="textInputs">
       <button class="textButtons">Retrieve image from website</button>
       <br>
       <br>
-      <input type="radio" name="sourceRadio" id="outsideSourceRadio2" class="radioInputs"> Choose an image for your meme from the images below:
+      <p>Or feel free to choose an image for your meme from the images below:</p>
       <br>
       <br>
     </form>
@@ -37,12 +36,12 @@
           <h3>The image you have chosen:</h3>
           <div id="topMemeDiv">
             <div id="topMemeSubDiv">
-              <p id="topMemeText" class="memeText">This is blank it is still very blank</p>
+              <p id="topMemeText" class="memeText">Your text</p>
             </div>
           </div>
           <div id="bottomMemeDiv">
             <div id="bottomMemeSubDiv">
-              <p id="bottomMemeText" class="memeText">That is still very blank ok </p>
+              <p id="bottomMemeText" class="memeText">more text</p>
             </div>
           </div>
           <img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="yourImage" class="largerImg">
@@ -55,31 +54,22 @@
             <input type="text" name="bottomText" id="bottomTextInput" class="textInputs">
             <br>
             <br>
-            <input type="submit" class="textButtons"  name="viewMeme" value="View this meme">
+            <input type="submit" class="textButtons"  name="viewMeme" value="Preview the meme you created" id="sub1" onclick="submitChecker='sub1'">
 
-          </form>
+          <!-- </form>
           <br>
-          <form id="saveMemeForm">
-            <input type="submit" class="textButtons" name="saveMeme" value="Save this meme to your gallery">
+          <form id="saveMemeForm"> -->
+            <input type="submit" class="textButtons" name="saveMeme" value="Save this meme to your gallery" id="sub2" onclick="submitChecker='sub2'">
           </form>
 
         </div>
-
-
       </div>
-
     <br>
     <table>
-      <tr>
-        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="yourMeme1" class="imgCarousel"></td>
-        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="yourMeme2" class="imgCarousel"></td>
-        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="yourMeme3" class="imgCarousel"></td>
-        <td><img src="images/in-the-making-studio-gx6NxtpgHqY-unsplash.jpg" alt="" id="yourMeme4" class="imgCarousel"></td>
-        <td><button id="nextImagesButton2" onClick="changeMemes()" class="buttonCarousel"> > </button></td>
+      <tr #id="galleryTableRow" class="galleryRow">
+        <!-- <td><button id="nextImagesButton2" onClick="changeMemes()" class="buttonCarousel"> > </button></td> -->
       </tr>
     </table>
-    <button onclick="viewMeme()">Hello World</button>
-
   </div>
   <script type="text/javascript" src="main.js"></script>
 </body>
